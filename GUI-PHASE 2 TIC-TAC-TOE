@@ -1,0 +1,31 @@
+    /**
+     * Initalizes menu UI components
+     */
+    public void displayMenu()
+    {
+        menuBackground = new JLabel(new ImageIcon(this.getClass().getResource("ima/menu.gif")));
+        add(menuBackground);
+        menuBackground.setLayout(null);
+
+
+        vsPlayerButton = new JButton();
+        vsComButton = new JButton();
+
+
+        vsPlayerButton.setBounds(311, 227, 166, 56);
+        vsPlayerButton.setBorderPainted(false);
+        vsPlayerButton.setContentAreaFilled(false);
+        vsPlayerButton.addActionListener(this);
+
+
+        vsComButton.setBounds(311, 357, 166, 56);
+        vsComButton.setBorderPainted(false);
+        vsComButton.setContentAreaFilled(false);
+        vsComButton.addActionListener(this);
+
+
+        menuBackground.add(vsPlayerButton);
+        menuBackground.add(vsComButton);
+    }
+
+
