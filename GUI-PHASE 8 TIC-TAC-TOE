@@ -1,0 +1,16 @@
+    /**
+     * Set board image equal to the board array
+     */
+    public void updataButtonIma()
+    {
+        for(int i=0; i<3; i++)
+        {
+            for(int n=0; n<3; n++)
+            {
+                buttons[i][n].setImaIcon(game.board[i][n]);
+            }
+        }
+    } 
+
+
+}
