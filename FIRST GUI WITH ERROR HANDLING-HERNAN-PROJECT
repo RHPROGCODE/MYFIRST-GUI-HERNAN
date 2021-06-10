@@ -1,0 +1,393 @@
+using System;
+
+namespace _1.Tic_Tac_Toe
+{
+    public class TicTacToe
+    {   
+        public char[,] gameBoard = new char[3,3];
+        public char choice;
+
+        public int player = 0;
+
+
+        public void resetGameBoard()
+        {
+            char a = '1';
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    gameBoard[i, j] = a;
+                    a++;
+                }
+            }
+        }
+
+        public void printGameBoard()
+        {
+            Console.Write("\n\n");
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (j != 2)
+                    {
+                        Console.Write(" " + gameBoard[i, j] + " |");
+                    }
+                    else
+                    {
+                        Console.Write(" " + gameBoard[i, j]);
+                    }
+                }
+
+                if (i != 2)
+                {
+                    Console.Write("\n---+---+---\n");
+                }
+            }
+
+            Console.Write("\n\n\n");
+
+        }
+
+        public bool isValidChoice(char choice, int player)
+        {
+            switch (choice)
+            {
+                case '1':
+                    if (gameBoard[0, 0] != 'X' && gameBoard[0, 0] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[0, 0] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[0, 0] = 'O';
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
+                     
+
+                case '2':
+                    if (gameBoard[0, 1] != 'X' && gameBoard[0, 1] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[0, 1] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[0, 1] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '3':
+                    if (gameBoard[0, 2] != 'X' && gameBoard[0, 2] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[0, 2] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[0, 2] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '4':
+                    if (gameBoard[1, 0] != 'X' && gameBoard[1, 0] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[1, 0] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[1, 0] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '5':
+                    if (gameBoard[1, 1] != 'X' && gameBoard[1, 1] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[1, 1] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[1, 1] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '6':
+                    if (gameBoard[1, 2] != 'X' && gameBoard[1, 2] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[1, 2] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[1, 2] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '7':
+                    if (gameBoard[2, 0] != 'X' && gameBoard[2, 0] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[2, 0] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[2, 0] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '8':
+                    if (gameBoard[2, 1] != 'X' && gameBoard[2, 1] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[2, 1] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[2, 1] = 'O';
+                        }
+                        return true;
+                    }
+                    return false;
+                     
+
+                case '9':
+                    if (gameBoard[2, 2] != 'X' && gameBoard[2, 2] != 'O')
+                    {
+                        if (player == 1)
+                        {
+                            gameBoard[2, 2] = 'X';
+                        }
+                        else
+                        {
+                            gameBoard[2, 2] = 'O';
+                        }
+
+                        return true;
+                    }
+                    return false;
+                     
+
+                default:
+
+                    return false;
+
+
+            }
+        }
+
+        public bool isGoal()
+        {
+            // Horzontal value checking
+
+            if (gameBoard[0,0] == gameBoard[0, 1] && gameBoard[0, 1] == gameBoard[0, 2])
+            {
+                return true;
+            }
+
+            if (gameBoard[1, 0] == gameBoard[1, 1] && gameBoard[1, 1] == gameBoard[1, 2])
+            {
+                return true;
+            }
+
+            if (gameBoard[2, 0] == gameBoard[2, 1] && gameBoard[2, 1] == gameBoard[2, 2])
+            {
+                return true;
+            }
+
+            // Vertical value checking
+
+            if (gameBoard[0, 0] == gameBoard[1, 0] && gameBoard[1, 0] == gameBoard[2, 0])
+            {
+                return true;
+            }
+
+            if (gameBoard[0, 1] == gameBoard[1, 1] && gameBoard[1, 1] == gameBoard[2, 1])
+            {
+                return true;
+            }
+
+            if (gameBoard[0, 2] == gameBoard[1, 2] && gameBoard[1, 2] == gameBoard[2, 2])
+            {
+                return true;
+            }
+
+            // Diagonal value checking
+
+            if (gameBoard[0, 0] == gameBoard[1, 1] && gameBoard[1, 1] == gameBoard[2, 2])
+            {
+                return true;
+            }
+
+            if (gameBoard[0, 2] == gameBoard[1, 1] && gameBoard[1, 1] == gameBoard[2, 0])
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool isEmptySqure()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (gameBoard[i, j] != 'X' && gameBoard[i, j] != 'O')
+                    {
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
+        }
+
+        public int getOwner()
+        {
+            if (player % 2 == 0)
+            {
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           START_GAME:
+            
+            TicTacToe game = new TicTacToe();
+
+            Console.WriteLine("\n\n**  Welcome to Tic Tac Toe Game ***");
+
+            game.resetGameBoard();
+            game.printGameBoard();
+
+            Console.WriteLine("\nPlayer 1 : 'X' \nPlayer 2 : 'O'\n\n");
+            Console.WriteLine("Press numbers 1-9 to fillup the squre...\n\n");
+
+            while (!game.isGoal() && game.isEmptySqure())
+            {
+                game.player++;
+
+                START_INPUT:
+
+                try
+                {
+                    if (game.player % 2 == 0)
+                    {
+                        Console.Write("Player 2 : ");
+                        game.choice = Char.Parse(Console.ReadLine());
+                        if (!game.isValidChoice(game.choice, 2))
+                        {
+                            Console.WriteLine("\n###Error: Invalid input. Value already exists or choice not found! Try again...\n");
+                            goto START_INPUT;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("Player 1 : ");
+                        game.choice = Char.Parse(Console.ReadLine());
+                        if (!game.isValidChoice(game.choice, 1))
+                        {
+                            Console.WriteLine("\n### Error: Invalid input. Value already exists or choice not found! Try again...\n");
+                            goto START_INPUT;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n\n### Error: Invalid input. Value already exists or choice not found! Try again...\n\n");
+                    goto START_INPUT;
+                }
+
+                game.printGameBoard();
+
+            };
+
+            if (game.isGoal())
+            {
+                Console.WriteLine("\n****************************\n");
+                Console.WriteLine("Match Won by Player {0}.", game.getOwner());
+                Console.WriteLine("\n****************************\n");
+            }
+            else
+            {
+                Console.WriteLine("\n************\n");
+                Console.WriteLine("Match Draw.");
+                Console.WriteLine("\n************\n");
+            }
+
+        REPLAY_CONFIRM:
+
+            try
+            {
+                Console.WriteLine("\n\nDo you want to play again? (Press 'y' or 'n'): ");
+                char replay = Char.Parse(Console.ReadLine());
+
+                if ( replay == 'y' || replay == 'Y')
+                {
+                    Console.Clear();
+                    goto START_GAME;
+                }
+                else if (replay == 'n' || replay == 'N')
+                {
+                    return;
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\n### Error: Invalid input. Press 'y' or 'n'...\n");
+                goto REPLAY_CONFIRM;
+            }
+
+        }
+    }
+}
