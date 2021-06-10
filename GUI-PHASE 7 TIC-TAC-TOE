@@ -1,0 +1,116 @@
+    /**
+     * Check if any button were clicked and performe action
+     */
+    public void actionPerformed(ActionEvent e)
+    {   
+        // Start menu
+        if(e.getSource().equals(vsPlayerButton))
+        {
+            menuBackground.setVisible(false);
+            displayGame();
+            gameBackground.setVisible(true);
+
+
+            vsPlayer = true;
+            vsCom = false;
+            playGame = true;
+        }
+
+
+        // Play against Ai
+        if(e.getSource().equals(vsComButton))
+        {
+            menuBackground.setVisible(false);
+            displayGame();
+            gameBackground.setVisible(true);
+
+
+            vsPlayer = false;
+            vsCom = true;
+            playGame = true;
+        }
+
+
+        // Play against another player
+        String turn = "-";
+        if (game.turn == 0)
+            turn = "X";
+        else if (game.turn == 1)
+            turn = "O";
+
+
+        if (vsPlayer)
+        {
+            for(int i=0; i<3; i++)
+            {
+                for(int n=0; n<3; n++)
+                {
+                    if(e.getSource().equals(buttons[i][n]) && game.isLegal(i,n))
+                    {
+                        game.playerPlay(i,n,turn);
+                        if (turn.equals("X"))
+                            game.turn++;
+                        else if (turn.equals("O"))
+                            game.turn--;
+                    }
+                }
+            }
+        }
+        else if (vsCom)
+        {
+            for(int i=0; i<3; i++)
+            {
+                for(int n=0; n<3; n++)
+                {
+                    if(e.getSource().equals(buttons[i][n]) && game.isLegal(i,n) && turn.equals("X"))
+                    {
+                        game.playerPlay(i,n,turn);
+                        game.turn++;
+                    }
+                }
+            }
+        }
+
+
+        // Home button
+        if(e.getSource().equals(homeButton))
+        {
+            game.resetGame();
+            game.turn = 0;
+            game.whoPlayFirst = 0;
+            updataButtonIma();
+            xScore = 0;
+            oScore = 0;
+            menuBackground.setVisible(true);
+            gameBackground.setVisible(false);
+        }
+
+
+        // Reset button
+        if(e.getSource().equals(resetButton))
+        {
+            game.resetGame();
+            game.turn = game.whoPlayFirst;
+            updataButtonIma();
+        }
+
+
+        // Win screen button
+        if(e.getSource().equals(winScreenButton))
+        {
+            for(int i=0; i<8; i++)
+                line[i].setVisible(false);
+
+
+            gameBackground.setVisible(true);
+            winScreen.setVisible(false);
+            menuBackground.setVisible(false);
+            game.resetGame();
+            game.SwitchWhoPlayFirst();
+            game.turn = game.whoPlayFirst;
+            updataButtonIma();
+            playGame = true;
+        }
+    }
+
+
