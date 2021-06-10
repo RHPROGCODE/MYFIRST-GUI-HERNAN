@@ -1,0 +1,12 @@
+    /**
+     * Display finish screen UI components
+     */
+    public void displayWinScreen(String t)
+    {
+        iniWinScreen(t);
+        menuBackground.setVisible(false);
+        gameBackground.setVisible(false);
+        winScreen.setVisible(true);
+    }
+
+
