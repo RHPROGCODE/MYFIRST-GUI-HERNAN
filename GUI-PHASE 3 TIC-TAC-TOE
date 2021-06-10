@@ -1,0 +1,74 @@
+    /**
+     * Initalizes game UI components
+     */
+    public void displayGame()
+    {
+        // Outer Panel
+        gameBackground = new JLabel(new ImageIcon(this.getClass().getResource("ima/X_turn.jpg")));
+        add(gameBackground);
+        gameBackground.setLayout(null);
+
+
+        // Center Panel
+        JPanel centerPanel = new JPanel(); 
+        centerPanel.setLayout(new GridLayout(3,3,6,6));
+        gameBackground.add(centerPanel, BorderLayout.CENTER);
+        centerPanel.setBounds(80, 103, 340, 340);
+        centerPanel.setOpaque(false);
+
+
+        // O and X buttons
+        for(int i=0; i<3; i++)
+        {
+            for(int n=0; n<3; n++)
+            {
+                buttons[i][n] = new Button();
+                centerPanel.add(buttons[i][n]);                
+                buttons[i][n].addActionListener(this);
+            }
+        }
+
+
+        // Home button
+        homeButton = new JButton();
+        gameBackground.add(homeButton);
+        homeButton.setBounds(442, 355, 34, 34);
+        homeButton.setBorderPainted(false);
+        homeButton.setContentAreaFilled(false);
+        homeButton.addActionListener(this);
+
+
+        // Reset button
+        resetButton = new JButton();
+        gameBackground.add(resetButton);
+        resetButton.setBounds(442, 401, 34, 34);
+        resetButton.setBorderPainted(false);
+        resetButton.setContentAreaFilled(false);
+        resetButton.addActionListener(this);
+
+
+        // X score
+        xScoreLabel = new JLabel(Integer.toString(xScore));
+        gameBackground.add(xScoreLabel);
+        xScoreLabel.setFont(xScoreLabel.getFont().deriveFont(24.0f));
+        xScoreLabel.setBounds(108, 35, 24, 24);
+
+
+        // O score
+        oScoreLabel = new JLabel(Integer.toString(oScore));
+        oScoreLabel.setText(Integer.toString(oScore));
+        gameBackground.add(oScoreLabel);
+        oScoreLabel.setFont(oScoreLabel.getFont().deriveFont(24.0f));
+        oScoreLabel.setBounds(375, 35, 24, 24);
+
+
+        // Line
+        for(int i=0; i<8; i++)
+        {
+            line[i] = new JLabel();
+            gameBackground.add(line[i],new Integer(2), 0);
+            line[i].setBounds(0, -18, 500, 500);
+            line[i].setIcon(new ImageIcon(this.getClass().getResource("ima/line"+(i+1)+".png")));
+            line[i].setVisible(false);
+        }
+    }
